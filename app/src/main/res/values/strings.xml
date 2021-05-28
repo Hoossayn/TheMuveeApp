@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">TheMuveeApp</string>
+    <string name="title_home">Movies</string>
 </resources>

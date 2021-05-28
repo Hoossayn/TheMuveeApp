@@ -18,20 +18,23 @@ import com.google.android.play.core.splitinstall.model.SplitInstallSessionStatus
 abstract class DynamicNavigationFragment<ViewBinding : ViewDataBinding> :
     BaseDataBindingFragment<ViewBinding>() {
 
+    /**
+     * [DynamicInstallMonitor] is for monitoring installation progress of a dynamic module
+     * after we tried to navigate to it and under circumstances that it's not available.
+     */
+    private val installMonitor = DynamicInstallMonitor()
+
     fun navigateWithInstallMonitor(
-        navController: NavController,
-        @IdRes resId: Int,
-        args: Bundle? = null,
-        navOptions: NavOptions? = null,
+            navController: NavController,
+            @IdRes destinationId: Int,
+            bundle: Bundle? = null
     ) {
 
-        val installMonitor = DynamicInstallMonitor()
-
         navController.navigate(
-            resId,
-            args,
-            navOptions,
-            DynamicExtras(installMonitor)
+                destinationId,
+                null,
+                null,
+                DynamicExtras(installMonitor)
         )
 
         println("DynamicInstallFragment isInstallRequired: ${installMonitor.isInstallRequired}")
@@ -39,37 +42,32 @@ abstract class DynamicNavigationFragment<ViewBinding : ViewDataBinding> :
         if (installMonitor.isInstallRequired) {
 
             installMonitor.status.observe(
-                viewLifecycleOwner,
-                object : Observer<SplitInstallSessionState> {
+                    viewLifecycleOwner,
+                    object : Observer<SplitInstallSessionState> {
 
-                    override fun onChanged(sessionState: SplitInstallSessionState) {
+                        override fun onChanged(sessionState: SplitInstallSessionState) {
 
-                        when (sessionState.status()) {
+                            when (sessionState.status()) {
 
-                            SplitInstallSessionStatus.INSTALLED -> {
-                                // Call navigate again here or after user taps again in the UI:
-                                navController.navigate(
-                                    resId,
-                                    args,
-                                    navOptions,
-                                    DynamicExtras(installMonitor)
-                                )
+                                SplitInstallSessionStatus.INSTALLED -> {
+                                    // Call navigate again here or after user taps again in the UI:
+                                    navController.navigate(destinationId, null, null, null)
+                                }
+                                SplitInstallSessionStatus.REQUIRES_USER_CONFIRMATION -> {
+                                }
+
+                                // Handle all remaining states:
+                                SplitInstallSessionStatus.FAILED -> {
+                                }
+                                SplitInstallSessionStatus.CANCELED -> {
+                                }
                             }
-                            SplitInstallSessionStatus.REQUIRES_USER_CONFIRMATION -> {
-                            }
 
-                            // Handle all remaining states:
-                            SplitInstallSessionStatus.FAILED -> {
+                            if (sessionState.hasTerminalStatus()) {
+                                installMonitor.status.removeObserver(this)
                             }
-                            SplitInstallSessionStatus.CANCELED -> {
-                            }
-                        }
-
-                        if (sessionState.hasTerminalStatus()) {
-                            installMonitor.status.removeObserver(this)
                         }
                     }
-                }
             )
         }
     }

@@ -2,7 +2,9 @@ include(":libraries:core")
 
 include (
         ":app",
-        ":libraries:test-utils"
+        ":libraries:test-utils",
+        ":features:home",
+        ":features:notification"
 
 )
 rootProject.name = "TheMuveeApp"

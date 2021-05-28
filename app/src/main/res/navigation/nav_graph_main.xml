@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph_main"
+    app:startDestination="@id/mainFragmenBottomNav">
+
+
+    <fragment
+        android:id="@+id/mainFragmenBottomNav"
+        android:name="com.example.themuveeapp.main.MainFragmentBottomNav"
+        android:label="MainFragment"
+        tools:layout="@layout/fragment_main_bottom_nav" />
+
+
+    <!-- Post Detail  dynamic feature module -->
+    <include-dynamic
+        android:id="@+id/nav_graph_post_detail"
+        android:name="com.smarttoolfactory.post_detail"
+        app:graphResName="nav_graph_post_detail"
+        app:moduleName="post_detail">
+
+        <argument
+            android:name="movie"
+            app:argType="com.example.domain.model.Movie" />
+
+    </include-dynamic>
+</navigation>

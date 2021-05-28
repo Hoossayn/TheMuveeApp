@@ -60,7 +60,7 @@ object Version {
     const val RETROFIT_RXJAVA3_ADAPTER ="2.9.0"
 
     // OkHttpClient
-    const val OK_HTTP3_VERSION = "4.8.1"
+    const val OK_HTTP3_VERSION = "4.7.2"
 
     // MockWebServer
     const val MOCK_WEB_SERVER_VERSION = "3.7.0"

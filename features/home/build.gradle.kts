@@ -1,101 +1,80 @@
-import extension.addAppModuleDependencies
+import extension.addBaseDynamicFeatureModuleDependencies
 import extension.addInstrumentationTestDependencies
 import extension.addUnitTestDependencies
 
-
 plugins {
-    id(Plugin.ANDROID_APPLICATION_PLUGIN)
-    //id(Plugin.ANDROID_DYNAMIC_FEATURE_PLUGIN)
+    id(Plugin.ANDROID_DYNAMIC_FEATURE_PLUGIN)
     id(Plugin.KOTLIN_ANDROID_PLUGIN)
     id(Plugin.KOTLIN_ANDROID_EXTENSIONS_PLUGIN)
     id(Plugin.KOTLIN_KAPT_PLUGIN)
     id(Plugin.DAGGER_HILT_PLUGIN)
-    id(Plugin.NAVIGATION_SAFE_ARGS)
+
 }
 
-
 android {
-
-    lintOptions {
-        isCheckReleaseBuilds = false
-    }
-
     compileSdkVersion(AndroidVersion.COMPILE_SDK_VERSION)
     buildToolsVersion(AndroidVersion.BUILD_TOOL_VERSION)
 
     defaultConfig {
-        applicationId = (AndroidVersion.APPLICATION_ID)
+        applicationId = "com.example.home"
         minSdkVersion(AndroidVersion.MIN_SDK_VERSION)
         targetSdkVersion(AndroidVersion.TARGET_SDK_VERSION)
         versionCode = AndroidVersion.VERSION_CODE
         versionName = AndroidVersion.VERSION_NAME
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-
-        javaCompileOptions {
-            annotationProcessorOptions {
-                arguments["room.schemaLocation"] = "$projectDir/schemas"
-            }
-        }
-
-
-        kapt{
-            arguments {
-                arg("room.schemaLocation", "$projectDir/schemas")
-            }
-        }
-
     }
 
     buildTypes {
         getByName("release"){
             isMinifyEnabled = false
             proguardFiles(
-                    getDefaultProguardFile("proguard-android-optimize.txt"),
-                    "proguard-rules.pro"
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro"
             )
         }
     }
 
     packagingOptions {
-        exclude("**/attach_hotspot_windows.dll")
-        exclude("META-INF/licenses/**")
         exclude("META-INF/AL2.0")
-        exclude("META-INF/LGPL2.1")
     }
 
-    buildFeatures {
-        dataBinding = true
-    }
+    dataBinding.isEnabled = true
+
+
+   //android.buildFeatures.viewBinding = true
 
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
     }
-
-    kotlinOptions{
+    kotlinOptions {
         jvmTarget = "1.8"
     }
-    dynamicFeatures = mutableSetOf(
-        Modules.DynamicFeature.HOME
-       /* Modules.DynamicFeature.POST_DETAIL,
-        Modules.DynamicFeature.SEARCH,
-        Modules.DynamicFeature.DASHBOARD,
-        Modules.DynamicFeature.NOTIFICATION,
-        Modules.DynamicFeature.ACCOUNT*/
-    )
-
 }
 
 dependencies {
-
     implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
 
-    implementation(project(Modules.AndroidLibrary.DATA))
-    implementation(project(Modules.AndroidLibrary.DOMAIN))
+    implementation(project(Modules.APP))
     implementation(project(Modules.AndroidLibrary.CORE))
+    implementation(project(Modules.AndroidLibrary.DOMAIN))
+    implementation("org.jetbrains.kotlin:kotlin-stdlib:${rootProject.extra["kotlin_version"]}")
+    implementation("androidx.legacy:legacy-support-v4:1.0.0")
 
-    addAppModuleDependencies()
+    addBaseDynamicFeatureModuleDependencies()
+
+    // Support and Widgets
+    implementation(Dependencies.APPCOMPAT)
+    implementation(Dependencies.MATERIAL)
+    implementation(Dependencies.CONSTRAINT_LAYOUT)
+    implementation(Dependencies.RECYCLER_VIEW)
+    implementation(Dependencies.VIEWPAGER2)
+    implementation(Dependencies.SWIPE_REFRESH_LAYOUT)
+
+    // Glide
+    implementation(Dependencies.GLIDE)
+    kapt(Dependencies.GLIDE_COMPILER)
 
     // Unit Tests
     addUnitTestDependencies()
@@ -104,4 +83,5 @@ dependencies {
     // Instrumentation Tests
     addInstrumentationTestDependencies()
     androidTestImplementation(project(Modules.AndroidLibrary.TEST_UTILS))
+
 }

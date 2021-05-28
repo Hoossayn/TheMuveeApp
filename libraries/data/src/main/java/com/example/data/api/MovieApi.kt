@@ -17,4 +17,5 @@ interface MovieApi {
     suspend fun getMovieDetails(@Path("movie_id") movieId: Int, @Query("language") language: String): MovieDetail*/
 }
 
-const val BASE_URL = "https://api.themoviedb.org/3/"
+const val BASE_URL = "https://api.themoviedb.org/3/movie/"
+const val API_KEY = "b90d08104f6ddf9bb30c704bccac4f6a"
