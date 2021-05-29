@@ -2,7 +2,6 @@ package com.example.core.di
 
 import com.example.data.di.DatabaseModule
 import com.example.data.di.NetworkModule
-import com.example.data.mapper.DTOtoEntityMapper
 import com.example.data.repository.MovieRepository
 import com.example.data.repository.MoviesRepositoryImpl
 import com.example.data.source.local.LocalDataSourceImpl
@@ -19,7 +18,7 @@ import javax.inject.Singleton
 @InstallIn(ApplicationComponent::class)
 @Module(
     includes = [
-        DataProviderModule::class,
+      //  DataProviderModule::class,
         NetworkModule::class,
         DatabaseModule::class
     ]
@@ -42,9 +41,11 @@ interface DataModule {
 /**
  * This module is for injections with @Provides annotation
  */
+/*
 @Module
 @InstallIn(ApplicationComponent::class)
 object DataProviderModule {
     @Provides
     fun provideDTOtoEntityMapper() = DTOtoEntityMapper()
 }
+*/

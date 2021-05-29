@@ -8,6 +8,8 @@ import com.example.core.ui.adapter.BaseListAdapter
 import com.example.domain.model.Movie
 import com.example.home.BR
 import com.example.home.databinding.MoviesListItemBinding
+import com.example.home.utils.load
+import kotlinx.android.synthetic.main.movies_list_item.view.*
 
 class MovieListAdapter (
     @LayoutRes private val layoutId: Int,
@@ -22,7 +24,8 @@ class MovieListAdapter (
         position: Int,
         payloads: MutableList<Any>
     ) {
-        binding.setVariable(BR._all, item)
+        binding.setVariable(BR.item, item)
+        binding.root.coverImageView.load(item.backdrop_path)
     }
 
     override fun onViewHolderCreated(
@@ -30,6 +33,9 @@ class MovieListAdapter (
         viewType: Int,
         binding: ViewDataBinding
     ) {
+
+       // binding.root.coverImageView.load("",viewHolder.itemView)
+
         binding.root.setOnClickListener {
             onItemClicked?.let {
                 it((getItem(viewHolder.bindingAdapterPosition)))

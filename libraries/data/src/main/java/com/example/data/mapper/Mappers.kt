@@ -19,11 +19,12 @@ interface Mapper<I, O> {
 interface ListMapper<I, O> : Mapper<List<I>, List<O>>
 
 
-class DTOtoEntityMapper : ListMapper<Movie, MovieEntity> {
+/*
+class DTOtoEntityMapper : ListMapper<Movies, MovieEntity> {
 
-    override fun map(input: List<Movie>): List<MovieEntity> {
+    override fun map(input: Movies): List<MovieEntity> {
         return input.map {
-            MovieEntity(it.id, it.backdrop_path, it.overview, it.release_date, it.title)
+            MovieEntity(it, it.backdrop_path, it.overview, it.release_date, it.title)
         }
     }
-}
+}*/

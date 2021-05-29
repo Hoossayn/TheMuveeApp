@@ -11,6 +11,7 @@ import com.example.core.viewstate.ViewState
 import com.example.domain.model.Movie
 import com.example.domain.usecases.GetMoviesUseCase
 import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.flow.onStart

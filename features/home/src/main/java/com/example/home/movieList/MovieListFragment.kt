@@ -37,6 +37,8 @@ class MovieListFragment : DynamicNavigationFragment<FragmentMovieListBinding>() 
             this.adapter = MovieListAdapter(R.layout.movies_list_item, viewModel::onClick)
         }
 
+
+
         val swipeRefreshLayout = dataBinding.swipeRefreshLayout
 
         swipeRefreshLayout.setOnRefreshListener {
