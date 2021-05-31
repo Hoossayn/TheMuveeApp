@@ -31,7 +31,7 @@ class MovieListViewModelTest {
     @JvmField
     var testCoroutineRule = TestCoroutineRule()
 
-    private val postList =
+    private val movieList =
         convertFromJsonToListOf<Movie>(getResourceAsText(RESPONSE_JSON_PATH))!!
 
     private val useCase: GetMoviesUseCase = mockk()
@@ -42,7 +42,7 @@ class MovieListViewModelTest {
     @Before
     fun setUp() {
         viewModel =
-            MovieListViewModel(testCoroutineRule.testCoroutineScope, useCase, savedStateHandle)
+            MovieListViewModel(testCoroutineRule.testCoroutineScope, useCase)
     }
 
 
@@ -83,7 +83,7 @@ class MovieListViewModelTest {
 
             // GIVEN
             every { useCase.getMoviesOfflineFirst() } returns flow<List<Movie>> {
-                emit(postList)
+                emit(movieList)
             }
 
             val testObserver = viewModel.moviesViewState.test()
@@ -140,7 +140,7 @@ class MovieListViewModelTest {
 
             // GIVEN
             every { useCase.getMoviesOfflineLast() } returns flow<List<Movie>> {
-                emit(postList)
+                emit(movieList)
             }
 
             val testObserver = viewModel.moviesViewState.test()

@@ -26,7 +26,7 @@ class MovieListAdapter (
         payloads: MutableList<Any>
     ) {
         binding.setVariable(BR.item, item)
-        binding.root.coverImageView.load(item.backdrop_path)
+        binding.root.coverImageView.load(item.poster_path)
     }
 
     override fun onViewHolderCreated(

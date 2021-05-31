@@ -10,13 +10,17 @@
         android:id="@+id/mainFragmenBottomNav"
         android:name="com.example.themuveeapp.main.MainFragmentBottomNav"
         android:label="MainFragment"
-        tools:layout="@layout/fragment_main_bottom_nav" />
+        tools:layout="@layout/fragment_main_bottom_nav" >
+        <action
+            android:id="@+id/action_mainFragmenBottomNav_to_nav_graph_movie_detail"
+            app:destination="@id/nav_graph_movie_detail" />
+    </fragment>
 
 
     <!-- Post Detail  dynamic feature module -->
     <include-dynamic
         android:id="@+id/nav_graph_movie_detail"
-        android:name="com.example.movies_detail"
+        android:name="com.example.movie_details"
         app:graphResName="nav_graph_movies_detail"
         app:moduleName="movies_details">
 

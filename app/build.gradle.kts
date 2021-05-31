@@ -92,6 +92,10 @@ dependencies {
     implementation(project(Modules.AndroidLibrary.DATA))
     implementation(project(Modules.AndroidLibrary.DOMAIN))
     implementation(project(Modules.AndroidLibrary.CORE))
+    implementation("com.google.android.play:core:1.10.0")
+
+    // For Kotlin users also import the Kotlin extensions library for Play Core:
+    implementation("com.google.android.play:core-ktx:1.8.1")
 
     addAppModuleDependencies()
 

@@ -11,7 +11,7 @@ import javax.inject.Singleton
 class EntityToMovie @Inject constructor(): ListMapper<MovieEntity, Movie>{
     override fun map(input: List<MovieEntity>): List<Movie> {
         return input.map {
-            Movie(it.id,it.backdrop_path, it.overview, it.release_date, it.title)
+            Movie(it.id,it.backdrop_path, it.overview, it.release_date, it.title, it.poster_path)
         }
     }
 }

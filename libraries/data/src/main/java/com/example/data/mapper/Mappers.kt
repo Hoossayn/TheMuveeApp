@@ -24,7 +24,7 @@ class DTOtoEntityMapper : EntityMapper<Movies, MovieEntity> {
 
     override fun map(input: Movies): List<MovieEntity> {
         return input.results.map {
-            MovieEntity(it.id, it.backdrop_path, it.overview, it.release_date, it.title)
+            MovieEntity(it.id, it.backdrop_path, it.overview, it.release_date, it.title, it.poster_path)
         }
     }
 }
@@ -32,7 +32,7 @@ class DTOtoEntityMapper : EntityMapper<Movies, MovieEntity> {
 class EntityListMapper: ListMapper<Movie, MovieEntity>{
     override fun map(input: List<Movie>): List<MovieEntity> {
         return input.map {
-            MovieEntity(it.id, it.backdrop_path, it.overview, it.release_date, it.title)
+            MovieEntity(it.id, it.backdrop_path, it.overview, it.release_date, it.title, it.poster_path)
         }
     }
 

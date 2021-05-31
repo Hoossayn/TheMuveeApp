@@ -13,6 +13,7 @@ import com.example.home.adapter.MovieListAdapter
 import com.example.home.databinding.FragmentMovieListBinding
 import com.example.home.di.DaggerMovieListComponent
 import com.example.home.viewmodel.MovieListViewModel
+import com.google.android.play.core.splitcompat.SplitCompat
 import dagger.hilt.android.EntryPointAccessors
 import javax.inject.Inject
 
@@ -28,6 +29,7 @@ class MovieListFragment : DynamicNavigationFragment<FragmentMovieListBinding>() 
     override fun onCreate(savedInstanceState: Bundle?) {
         initCoreDependentInjection()
         super.onCreate(savedInstanceState)
+        SplitCompat.installActivity(requireContext())
         viewModel.getMovies()
     }
 
