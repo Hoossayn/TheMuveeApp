@@ -18,9 +18,6 @@ class MoviesRepositoryImpl @Inject constructor(
         val movieDTOList = remoteDataSource.getMovies(language,page)
         return mapper.map(movieDTOList)
     }
-
-
-
     override suspend fun getMoviesFromLocal(): List<MovieEntity> {
         return localDataSource.getMoviesEntities()
     }

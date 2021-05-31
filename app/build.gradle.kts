@@ -77,12 +77,10 @@ android {
         jvmTarget = "1.8"
     }
     dynamicFeatures = mutableSetOf(
-        Modules.DynamicFeature.HOME
-       /* Modules.DynamicFeature.POST_DETAIL,
-        Modules.DynamicFeature.SEARCH,
-        Modules.DynamicFeature.DASHBOARD,
-        Modules.DynamicFeature.NOTIFICATION,
-        Modules.DynamicFeature.ACCOUNT*/
+        Modules.DynamicFeature.HOME,
+        Modules.DynamicFeature.MOVIE_DETAILS
+        /*Modules.DynamicFeature.SHOWS,
+        Modules.DynamicFeature.SHOWS_DETAILS*/
     )
 
 }

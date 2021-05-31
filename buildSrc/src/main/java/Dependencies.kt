@@ -37,6 +37,9 @@ object Dependencies{
     const val LIFECYCLE_LIVEDATA_KTX =
         "androidx.lifecycle:lifecycle-livedata-ktx:${Version.LIFECYCLE_VERSION}"
 
+    const val LIFECYCLE_EXTENSIONS =
+        "androidx.lifecycle:lifecycle-extensions:${Version.LIFECYCLE_VERSION}"
+
     // Saved state module for ViewModel
     const val LIFECYCLE_VIEWMODEL_SAVEDSTATE =
         "androidx.lifecycle:lifecycle-viewmodel-savedstate:${Version.LIFECYCLE_VERSION}"

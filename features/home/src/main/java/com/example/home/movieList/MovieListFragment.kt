@@ -2,9 +2,12 @@ package com.example.home.movieList
 
 import android.os.Bundle
 import android.view.View
+import androidx.core.os.bundleOf
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.core.di.CoreModuleDependencies
 import com.example.core.ui.fragment.DynamicNavigationFragment
+import com.example.domain.model.Movie
 import com.example.home.R
 import com.example.home.adapter.MovieListAdapter
 import com.example.home.databinding.FragmentMovieListBinding
@@ -46,7 +49,23 @@ class MovieListFragment : DynamicNavigationFragment<FragmentMovieListBinding>() 
             viewModel.refreshMovies()
         }
 
-      //  subscribeGoToDetailScreen()
+        subscribeGoToDetailScreen()
+    }
+
+
+    private fun subscribeGoToDetailScreen(){
+
+        viewModel.gotoDetailsScreen.observe(
+            viewLifecycleOwner,{
+                it.getContentIfNotHandled()?.let { movie ->
+                    val bundle = bundleOf("movie" to movie)
+
+                    findNavController().navigate(
+                        R.id.action_movieListFragment_to_nav_graph_movie_detail, bundle
+                    )
+                }
+            }
+        )
     }
 
 

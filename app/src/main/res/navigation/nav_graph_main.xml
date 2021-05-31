@@ -15,10 +15,10 @@
 
     <!-- Post Detail  dynamic feature module -->
     <include-dynamic
-        android:id="@+id/nav_graph_post_detail"
-        android:name="com.smarttoolfactory.post_detail"
-        app:graphResName="nav_graph_post_detail"
-        app:moduleName="post_detail">
+        android:id="@+id/nav_graph_movie_detail"
+        android:name="com.example.movies_detail"
+        app:graphResName="nav_graph_movies_detail"
+        app:moduleName="movies_details">
 
         <argument
             android:name="movie"

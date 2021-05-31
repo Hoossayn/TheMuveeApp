@@ -1,12 +1,12 @@
-include(":libraries:core")
 
 include (
-        ":app",
-        ":libraries:test-utils",
-        ":features:home",
-        ":features:notification"
-
+    ":app",
+    ":libraries:core",
+    ":libraries:data",
+    ":libraries:domain",
+    ":libraries:test-util",
+    ":features:home",
+    ":features:notification",
+    ":features:movieDetails"
 )
 rootProject.name = "TheMuveeApp"
-include(":libraries:data")
-include(":libraries:domain")

@@ -5,7 +5,7 @@ object Modules {
         const val CORE = ":libraries:core"
         const val DATA = ":libraries:data"
         const val DOMAIN = ":libraries:domain"
-        const val TEST_UTILS = ":libraries:test-utils"
+        const val TEST_UTILS = ":libraries:test-util"
     }
 
 
@@ -14,10 +14,8 @@ object Modules {
      */
     object DynamicFeature {
         const val HOME = ":features:home"
-        const val PROPERTY_DETAIL = ":features:property_detail"
-        const val DASHBOARD = ":features:dashboard"
-        const val NOTIFICATION = ":features:notification"
-        const val ACCOUNT = ":features:account"
-        const val SEARCH = ":features:search"
+        const val MOVIE_DETAILS = ":features:movieDetails"
+      /*  const val SHOWS = ":features:shows"
+        const val SHOWS_DETAILS = ":features:showsDetails"*/
     }
 }
