@@ -1,8 +1,8 @@
 
 
 object PluginVersion {
-    const val KOTLIN_VERSION = "1.4.32"
-    const val GRADLE_VERSION = "4.1.3"
+    const val KOTLIN_VERSION = "1.5.10"
+    const val GRADLE_VERSION = "4.2.1"
 
     const val NAV_SAFE_ARGS_VERSION = "2.3.0"
     const val KTLINT_VERSION = "9.3.0"
@@ -36,7 +36,7 @@ object Version {
     const val CONSTRAINT_LAYOUT_VERSION = "2.0.1"
 
     // RecyclerView
-    const val RECYCLER_VIEW_VERSION = "1.2.0-alpha05"
+    const val RECYCLER_VIEW_VERSION = "1.2.1"
 
     // CardView
     const val CARD_VIEW_VERSION = "1.0.0"
@@ -107,6 +107,8 @@ object Version {
 
     // Leak Canary
     const val LEAK_CANARY_VERSION = "2.4"
+
+    const val PLAY_CORE = "1.8.1"
 }
 
 object TestVersion {

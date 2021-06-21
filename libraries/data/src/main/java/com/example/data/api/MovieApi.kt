@@ -1,7 +1,9 @@
 package com.example.data.api
 
-import com.example.data.model.Movie
-import com.example.data.model.Movies
+import com.example.data.model.movies.Movies
+import com.example.data.model.movies.Movie
+import com.example.data.model.shows.Shows
+import com.example.data.model.shows.ShowsResult
 import retrofit2.http.GET
 import retrofit2.http.Query
 
@@ -12,6 +14,13 @@ interface MovieApi {
         @Query("language") language: String,
         @Query("page") page: Int
     ): Movies
+
+
+    @GET("tv/popular")
+    suspend fun getShows(
+        @Query("language") language: String,
+        @Query("page") page: Int
+    ): ShowsResult
 
     /*@GET("{movie_id}")
     suspend fun getMovieDetails(@Path("movie_id") movieId: Int, @Query("language") language: String): MovieDetail*/

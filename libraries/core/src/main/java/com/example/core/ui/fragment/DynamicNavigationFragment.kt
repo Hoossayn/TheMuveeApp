@@ -15,8 +15,7 @@ import com.google.android.play.core.splitinstall.model.SplitInstallSessionStatus
  * Fragment with [DynamicInstallMonitor] to navigate with dynamic
  * features based on [SplitInstallSessionStatus]
  */
-abstract class DynamicNavigationFragment<ViewBinding : ViewDataBinding> :
-    BaseDataBindingFragment<ViewBinding>() {
+abstract class DynamicNavigationFragment<ViewBinding : ViewDataBinding> : BaseDataBindingFragment<ViewBinding>() {
 
     /**
      * [DynamicInstallMonitor] is for monitoring installation progress of a dynamic module
@@ -58,8 +57,10 @@ abstract class DynamicNavigationFragment<ViewBinding : ViewDataBinding> :
 
                                 // Handle all remaining states:
                                 SplitInstallSessionStatus.FAILED -> {
+
                                 }
                                 SplitInstallSessionStatus.CANCELED -> {
+
                                 }
                             }
 

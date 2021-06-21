@@ -1,9 +1,9 @@
 package com.example.data.source
 
 import com.example.data.api.MovieApi
-import com.example.data.db.MovieDao
-import com.example.data.model.Movie
-import com.example.data.model.MovieEntity
+import com.example.data.db.dao.MovieDao
+import com.example.data.model.movies.Movie
+import com.example.data.model.movies.MovieEntity
 import com.example.data.source.local.LocalDataSourceImpl
 import com.example.data.source.remote.RemoteDataSourceImpl
 import com.example.test_util.RESPONSE_JSON_PATH
@@ -123,7 +123,7 @@ class PostDataSourceCoroutinesTest {
             coEvery { postDao.insert(postEntityList) } returns idList
 
             // WHEN
-            val result = localPostDataSource.saveEntities(postEntityList)
+            val result = localPostDataSource.saveMoviesEntities(postEntityList)
 
             // THEN
             Truth.assertThat(result).containsExactlyElementsIn(idList)

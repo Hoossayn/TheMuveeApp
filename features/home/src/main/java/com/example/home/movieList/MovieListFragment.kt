@@ -7,13 +7,11 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.core.di.CoreModuleDependencies
 import com.example.core.ui.fragment.DynamicNavigationFragment
-import com.example.domain.model.Movie
 import com.example.home.R
 import com.example.home.adapter.MovieListAdapter
 import com.example.home.databinding.FragmentMovieListBinding
 import com.example.home.di.DaggerMovieListComponent
 import com.example.home.viewmodel.MovieListViewModel
-import com.google.android.play.core.splitcompat.SplitCompat
 import dagger.hilt.android.EntryPointAccessors
 import javax.inject.Inject
 
@@ -29,9 +27,9 @@ class MovieListFragment : DynamicNavigationFragment<FragmentMovieListBinding>() 
     override fun onCreate(savedInstanceState: Bundle?) {
         initCoreDependentInjection()
         super.onCreate(savedInstanceState)
-        SplitCompat.installActivity(requireContext())
         viewModel.getMovies()
     }
+
 
     override fun bindViews(view: View, savedInstanceState: Bundle?) {
         dataBinding.viewModel = viewModel
@@ -40,8 +38,8 @@ class MovieListFragment : DynamicNavigationFragment<FragmentMovieListBinding>() 
             this.layoutManager = GridLayoutManager(requireContext(), 3)
 
             this.adapter = MovieListAdapter(R.layout.movies_list_item, viewModel::onClick)
-        }
 
+        }
 
 
         val swipeRefreshLayout = dataBinding.swipeRefreshLayout

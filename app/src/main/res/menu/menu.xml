@@ -7,7 +7,7 @@
         android:title="Movies" />
 
     <item
-        android:id="@+id/nav_graph_dfm_dashboard_start"
+        android:id="@+id/nav_graph_dfm_shows_start"
         android:icon="@drawable/ic_baseline_dashboard_24"
         android:title="Shows" />
 

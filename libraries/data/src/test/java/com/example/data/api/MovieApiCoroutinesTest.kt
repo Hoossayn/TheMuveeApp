@@ -1,7 +1,6 @@
 package com.example.data.api
 
-import com.example.data.model.Movie
-import com.example.data.model.Movies
+import com.example.data.model.movies.Movies
 import com.example.test_util.extension.TestCoroutineExtension
 import com.google.common.truth.Truth
 import kotlinx.coroutines.launch

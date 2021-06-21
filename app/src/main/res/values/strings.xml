@@ -2,4 +2,5 @@
     <string name="app_name">TheMuveeApp</string>
     <string name="title_home">Movies</string>
     <string name="movie_details">MovieDetails</string>
+    <string name="title_shows">Shows</string>
 </resources>

@@ -148,6 +148,9 @@ object Dependencies{
     const val LEAK_CANARY =
         "com.squareup.leakcanary:leakcanary-android:${Version.LEAK_CANARY_VERSION}"
 
+    //Play Core
+    const val PLAY_CORE_KTX = "com.google.android.play:core-ktx:${Version.PLAY_CORE}"
+
 }
 
 object TestDeps {

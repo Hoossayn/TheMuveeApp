@@ -1,8 +1,7 @@
-package com.example.data.db
+package com.example.data.db.dao
 
 import androidx.room.*
-import com.example.data.model.Movie
-import com.example.data.model.MovieEntity
+import com.example.data.model.movies.MovieEntity
 
 @Dao
 interface MovieDao {

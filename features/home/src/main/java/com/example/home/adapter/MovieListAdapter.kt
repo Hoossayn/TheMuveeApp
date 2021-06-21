@@ -1,6 +1,5 @@
 package com.example.home.adapter
 
-import android.widget.BaseAdapter
 import androidx.annotation.LayoutRes
 import androidx.databinding.ViewDataBinding
 import androidx.recyclerview.widget.DiffUtil
@@ -8,7 +7,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.core.ui.adapter.BaseListAdapter
 import com.example.domain.model.Movie
 import com.example.home.BR
-import com.example.home.databinding.MoviesListItemBinding
 import com.example.home.utils.load
 import kotlinx.android.synthetic.main.movies_list_item.view.*
 

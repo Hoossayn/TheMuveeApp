@@ -1,8 +1,9 @@
 package com.example.data.repository
 
-import com.example.data.mapper.DTOtoEntityMapper
-import com.example.data.model.Movie
-import com.example.data.model.MovieEntity
+import com.example.data.mapper.MoviesDTOtoEntityMapper
+import com.example.data.model.movies.Movie
+import com.example.data.model.movies.MovieEntity
+import com.example.data.repository.movies.MoviesRepositoryImpl
 import com.example.data.source.local.LocalMoviesDataSource
 import com.example.data.source.remote.RemoteDataSource
 import com.example.test_util.RESPONSE_JSON_PATH
@@ -31,7 +32,7 @@ internal class PostRepositoryCoroutinesTest {
 
     private val localPostDataSource: LocalMoviesDataSource = mockk()
     private val remotePostDataSource: RemoteDataSource = mockk()
-    private val mapper: DTOtoEntityMapper = mockk()
+    private val mapperMovies: MoviesDTOtoEntityMapper = mockk()
 
     companion object {
         val postDTOList =
@@ -46,7 +47,7 @@ internal class PostRepositoryCoroutinesTest {
 
         // GIVEN
         coEvery { remotePostDataSource.getMovies("",1) } throws Exception("Network Exception")
-        every { mapper.map(postDTOList) } returns postEntityList
+        every { mapperMovies.map(postDTOList) } returns postEntityList
 
         // WHEN
         val expected = try {
@@ -58,7 +59,7 @@ internal class PostRepositoryCoroutinesTest {
         // THEN
         Truth.assertThat(expected).isInstanceOf(Exception::class.java)
         coVerify(exactly = 1) { remotePostDataSource.getMovies("",1) }
-        verify(exactly = 0) { mapper.map(postDTOList) }
+        verify(exactly = 0) { mapperMovies.map(postDTOList) }
     }
 
     @Test
@@ -68,7 +69,7 @@ internal class PostRepositoryCoroutinesTest {
             // GIVEN
             val actual = postEntityList
             coEvery { remotePostDataSource.getMovies("",1) } returns postDTOList
-            every { mapper.map(postDTOList) } returns postEntityList
+            every { mapperMovies.map(postDTOList) } returns postEntityList
 
             // WHEN
             val expected = repository.getMoviesFromRemote("",1)
@@ -77,7 +78,7 @@ internal class PostRepositoryCoroutinesTest {
             Truth.assertThat(expected).isEqualTo(actual)
             coVerifyOrder {
                 remotePostDataSource.getMovies("",1)
-                mapper.map(postDTOList)
+                mapperMovies.map(postDTOList)
             }
         }
 
@@ -120,15 +121,15 @@ internal class PostRepositoryCoroutinesTest {
         }
 
         coEvery {
-            localPostDataSource.saveEntities(postEntityList)
+            localPostDataSource.saveMoviesEntities(postEntityList)
         } returns idList
 
         // WHEN
-        val result = localPostDataSource.saveEntities(postEntityList)
+        val result = localPostDataSource.saveMoviesEntities(postEntityList)
 
         // THEN
         Truth.assertThat(result).containsExactlyElementsIn(idList)
-        coVerify(exactly = 1) { localPostDataSource.saveEntities(postEntityList) }
+        coVerify(exactly = 1) { localPostDataSource.saveMoviesEntities(postEntityList) }
     }
 
     @Test
@@ -148,11 +149,11 @@ internal class PostRepositoryCoroutinesTest {
 
     @BeforeEach
     fun setUp() {
-        repository = MoviesRepositoryImpl(localPostDataSource, remotePostDataSource, mapper)
+        repository = MoviesRepositoryImpl(localPostDataSource, remotePostDataSource, mapperMovies)
     }
 
     @AfterEach
     fun tearDown() {
-        clearMocks(localPostDataSource, remotePostDataSource, mapper)
+        clearMocks(localPostDataSource, remotePostDataSource, mapperMovies)
     }
 }

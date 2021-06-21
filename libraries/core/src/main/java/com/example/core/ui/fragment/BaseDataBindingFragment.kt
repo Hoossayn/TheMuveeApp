@@ -47,6 +47,7 @@ abstract class BaseDataBindingFragment<ViewBinding : ViewDataBinding> : Fragment
     @LayoutRes
     abstract fun getLayoutRes(): Int
 
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,

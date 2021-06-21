@@ -4,17 +4,20 @@
     android:id="@+id/nav_graph_dfm_home_start"
     app:startDestination="@id/nav_graph_movie_list">
 
-    <!-- Account  dynamic feature module -->
+    <!-- Movie  dynamic feature module -->
     <include-dynamic
         android:id="@+id/nav_graph_movie_list"
         android:name="com.example.home"
         app:graphResName="nav_graph_movie_list"
         app:moduleName="home">
+        <action
+            android:id="@+id/action_nav_graph_movie_list_to_nav_graph_movie_detail"
+            app:destination="@id/nav_graph_movie_detail" />
     </include-dynamic>
 
-    <!-- Post Detail  dynamic feature module -->
-   <!-- <include-dynamic
-        android:id="@+id/nav_graph_post_detail"
+    <!-- Movie Detail  dynamic feature module -->
+    <include-dynamic
+        android:id="@+id/nav_graph_movie_detail"
         android:name="com.example.movies_detail"
         app:graphResName="nav_graph_post_detail"
         app:moduleName="movie_details">
@@ -23,6 +26,6 @@
             android:name="movie"
             app:argType="com.example.domain.model.Movie" />
 
-    </include-dynamic>-->
+    </include-dynamic>
 
 </navigation>

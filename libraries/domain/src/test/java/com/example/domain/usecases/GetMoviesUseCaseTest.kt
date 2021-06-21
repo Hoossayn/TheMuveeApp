@@ -1,8 +1,8 @@
 package com.example.domain.usecases
 
 import android.database.SQLException
-import com.example.data.model.MovieEntity
-import com.example.data.repository.MovieRepository
+import com.example.data.model.movies.MovieEntity
+import com.example.data.repository.movies.MovieRepository
 import com.example.domain.dispatcher.UseCaseDispatchers
 import com.example.domain.error.EmptyDataException
 import com.example.domain.mapper.EntityToMovie
@@ -16,7 +16,6 @@ import io.mockk.*
 import kotlinx.coroutines.Dispatchers
 import org.junit.jupiter.api.*
 
-import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.extension.RegisterExtension
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)

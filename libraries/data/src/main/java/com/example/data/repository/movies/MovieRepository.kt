@@ -1,8 +1,9 @@
-package com.example.data.repository
+package com.example.data.repository.movies
 
-import com.example.data.model.MovieEntity
+import com.example.data.model.movies.MovieEntity
 
 interface MovieRepository {
+
     suspend fun getMoviesFromRemote(language:String, page:Int): List<MovieEntity>
 
     suspend fun getMoviesFromLocal(): List<MovieEntity>

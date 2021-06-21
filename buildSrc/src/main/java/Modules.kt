@@ -15,7 +15,8 @@ object Modules {
     object DynamicFeature {
         const val HOME = ":features:home"
         const val MOVIE_DETAILS = ":features:movieDetails"
-      /*  const val SHOWS = ":features:shows"
+        const val SHOWS = ":features:shows"
+      /*
         const val SHOWS_DETAILS = ":features:showsDetails"*/
     }
 }

@@ -36,9 +36,9 @@ class MainFragmentBottomNav : DynamicNavigationFragment<FragmentMainBottomNavBin
 
         val navGraphIds = listOf(
                 R.navigation.nav_graph_dfm_home_start,
-                R.navigation.nav_graph_dfm_dashboard_start,
-                R.navigation.nav_graph_dfm_notification_start,
-                R.navigation.nav_graph_dfm_account_start
+                R.navigation.nav_graph_dfm_shows_start,
+               /* R.navigation.nav_graph_dfm_notification_start,
+                R.navigation.nav_graph_dfm_account_start*/
         )
 
         // Setup the bottom navigation view with a list of navigation graphs

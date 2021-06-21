@@ -5,7 +5,6 @@ import extension.addUnitTestDependencies
 
 plugins {
     id(Plugin.ANDROID_APPLICATION_PLUGIN)
-    //id(Plugin.ANDROID_DYNAMIC_FEATURE_PLUGIN)
     id(Plugin.KOTLIN_ANDROID_PLUGIN)
     id(Plugin.KOTLIN_ANDROID_EXTENSIONS_PLUGIN)
     id(Plugin.KOTLIN_KAPT_PLUGIN)
@@ -57,6 +56,8 @@ android {
         }
     }
 
+
+
     packagingOptions {
         exclude("**/attach_hotspot_windows.dll")
         exclude("META-INF/licenses/**")
@@ -76,10 +77,13 @@ android {
     kotlinOptions{
         jvmTarget = "1.8"
     }
+
     dynamicFeatures = mutableSetOf(
         Modules.DynamicFeature.HOME,
-        Modules.DynamicFeature.MOVIE_DETAILS
-        /*Modules.DynamicFeature.SHOWS,
+        Modules.DynamicFeature.MOVIE_DETAILS,
+        Modules.DynamicFeature.SHOWS,
+
+        /*,
         Modules.DynamicFeature.SHOWS_DETAILS*/
     )
 
@@ -89,13 +93,12 @@ dependencies {
 
     implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
 
-    implementation(project(Modules.AndroidLibrary.DATA))
-    implementation(project(Modules.AndroidLibrary.DOMAIN))
-    implementation(project(Modules.AndroidLibrary.CORE))
-    implementation("com.google.android.play:core:1.10.0")
+    api(project(Modules.AndroidLibrary.DATA))
+    api(project(Modules.AndroidLibrary.DOMAIN))
+    api(project(Modules.AndroidLibrary.CORE))
+    //implementation("com.google.android.play:core:1.10.0")
 
     // For Kotlin users also import the Kotlin extensions library for Play Core:
-    implementation("com.google.android.play:core-ktx:1.8.1")
 
     addAppModuleDependencies()
 

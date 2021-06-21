@@ -6,7 +6,8 @@ include (
     ":libraries:domain",
     ":libraries:test-util",
     ":features:home",
+    ":features:movieDetails",
+    ":features:shows",
     ":features:notification",
-    ":features:movieDetails"
 )
 rootProject.name = "TheMuveeApp"

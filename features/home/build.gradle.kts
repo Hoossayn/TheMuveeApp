@@ -56,11 +56,11 @@ android {
 dependencies {
     implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
 
-    implementation(project(Modules.APP))
-    implementation(project(Modules.AndroidLibrary.CORE))
-    implementation(project(Modules.AndroidLibrary.DOMAIN))
-    implementation("org.jetbrains.kotlin:kotlin-stdlib:${rootProject.extra["kotlin_version"]}")
-    implementation("androidx.legacy:legacy-support-v4:1.0.0")
+    api(project(Modules.APP))
+    api(project(Modules.AndroidLibrary.CORE))
+    api(project(Modules.AndroidLibrary.DOMAIN))
+    api("org.jetbrains.kotlin:kotlin-stdlib:${rootProject.extra["kotlin_version"]}")
+    api("androidx.legacy:legacy-support-v4:1.0.0")
 
     addBaseDynamicFeatureModuleDependencies()
 

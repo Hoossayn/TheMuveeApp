@@ -5,7 +5,7 @@ buildscript {
     //ext.kotlin_version = "1.4.32"
     repositories{
         google()
-        jcenter()
+        mavenCentral()
         maven { url = uri("https://plugins.gradle.org/m2/") }
         maven { url = uri("https://jitpack.io") }
     }
@@ -13,12 +13,12 @@ buildscript {
 
     dependencies {
         classpath(Plugin.CLASSPATH_GRADLE)
+        //classpath(kotlin("gradle-plugin", version = PluginVersion.KOTLIN_VERSION))
         classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:1.4.32")
         classpath(Plugin.CLASSPATH_DAGGER_HILT)
         classpath(Plugin.CLASSPATH_KTLINT)
         classpath(Plugin.CLASSPATH_NAV_SAFE_ARGS)
-        classpath(Plugin.CLASSPATH_MP_CHART)
-        classpath("com.android.tools.build:gradle:4.1.3")
+        classpath("com.android.tools.build:gradle:4.2.1")
 
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files

@@ -1,6 +1,6 @@
-package com.example.data.model
+package com.example.data.model.movies
 
-data class Movies(
+data class Movies (
     val page: Int,
     val results: List<Movie>,
     val total_pages: Int,

@@ -2,9 +2,12 @@ package com.example.core.di
 
 import com.example.data.di.DatabaseModule
 import com.example.data.di.NetworkModule
-import com.example.data.mapper.DTOtoEntityMapper
-import com.example.data.repository.MovieRepository
-import com.example.data.repository.MoviesRepositoryImpl
+import com.example.data.mapper.MoviesDTOtoEntityMapper
+import com.example.data.mapper.ShowsDTOtoEntityMapper
+import com.example.data.repository.movies.MovieRepository
+import com.example.data.repository.movies.MoviesRepositoryImpl
+import com.example.data.repository.shows.ShowsRepository
+import com.example.data.repository.shows.ShowsRepositoryImpl
 import com.example.data.source.local.LocalDataSourceImpl
 import com.example.data.source.local.LocalMoviesDataSource
 import com.example.data.source.remote.RemoteDataSource
@@ -37,6 +40,10 @@ interface DataModule {
     @Singleton
     @Binds
     fun bindRepository(repository: MoviesRepositoryImpl): MovieRepository
+
+    @Singleton
+    @Binds
+    fun bindShowsRepository(repository: ShowsRepositoryImpl): ShowsRepository
 }
 
 /**
@@ -46,5 +53,8 @@ interface DataModule {
 @InstallIn(ApplicationComponent::class)
 object DataProviderModule {
     @Provides
-    fun provideDTOtoEntityMapper() = DTOtoEntityMapper()
+    fun provideDTOtoEntityMapper() = MoviesDTOtoEntityMapper()
+
+    @Provides
+    fun provideShowDTOToEntity ()= ShowsDTOtoEntityMapper()
 }

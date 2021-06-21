@@ -76,11 +76,14 @@ fun DependencyHandler.addAppModuleDependencies(){
     // Gson
     implementation(Dependencies.GSON)
     implementation(Dependencies.CHUCKER_DEBUG)
-//    implementation(Dependencies.CHUCKER_RELEASE_NO_OP)
+//  implementation(Dependencies.CHUCKER_RELEASE_NO_OP)
 
     // Glide
     implementation(Dependencies.GLIDE)
     kapt(Dependencies.GLIDE_COMPILER)
+
+    //PLAY CORE
+    //implementation(Dependencies.PLAY_CORE_KTX)
 }
 
 

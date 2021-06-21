@@ -19,7 +19,7 @@ import com.example.themuveeapp.R
 class DynamicBottomNavigationStateAdapter(fragmentManager: FragmentManager, lifecycle: Lifecycle) :
     NavigableFragmentStateAdapter(fragmentManager, lifecycle) {
 
-    override fun getItemCount(): Int = 4
+    override fun getItemCount(): Int = 2
 
     override fun createFragment(position: Int): Fragment {
         return when (position) {
@@ -29,20 +29,20 @@ class DynamicBottomNavigationStateAdapter(fragmentManager: FragmentManager, life
                 BaseNavHostFragment
                     .createNavHostFragment(R.navigation.nav_graph_dfm_home_start)
 
-            // Dashboard nav graph
-            1 ->
+            // Shows nav graph
+            else ->
                 BaseDynamicNavHostFragment
-                    .createDynamicNavHostFragment(R.navigation.nav_graph_dfm_dashboard_start)
+                    .createDynamicNavHostFragment(R.navigation.nav_graph_dfm_shows_start)
 
             // Notification nav graph
-            2 ->
+         /*   2 ->
                 BaseNavHostFragment
                     .createNavHostFragment(R.navigation.nav_graph_dfm_notification_start)
 
             // Account nav graph
             else ->
                 BaseNavHostFragment
-                    .createNavHostFragment(R.navigation.nav_graph_dfm_account_start)
+                    .createNavHostFragment(R.navigation.nav_graph_dfm_account_start)*/
         }
     }
 }

@@ -1,7 +1,7 @@
 package com.example.domain.usecases
 
-import com.example.data.model.MovieEntity
-import com.example.data.repository.MovieRepository
+import com.example.data.model.movies.MovieEntity
+import com.example.data.repository.movies.MovieRepository
 import com.example.domain.dispatcher.UseCaseDispatchers
 import com.example.domain.error.EmptyDataException
 import com.example.domain.mapper.EntityToMovie

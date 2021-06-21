@@ -1,6 +1,6 @@
 package com.example.data.api
 
-import com.example.data.model.Movie
+import com.example.data.model.movies.Movie
 import com.example.test_util.RESPONSE_JSON_PATH
 import com.example.test_util.utils.convertFromJsonToListOf
 import com.example.test_util.utils.getResourceAsText

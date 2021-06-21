@@ -1,5 +1,6 @@
 package com.example.home.viewmodel
 
+import android.util.Log
 import android.widget.Toast
 import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.LiveData
@@ -22,6 +23,7 @@ class MovieListViewModel @ViewModelInject constructor(
     private val moviesUseCase: GetMoviesUseCase
 ): AbstractMovieListVM() {
 
+
     private val _goToDetailScreen = MutableLiveData<Event<Movie>>()
     override val gotoDetailsScreen: LiveData<Event<Movie>>
         get() = _goToDetailScreen
@@ -39,6 +41,7 @@ class MovieListViewModel @ViewModelInject constructor(
                 _movieViewState.value = ViewState(status = Status.LOADING)
             }.onEach {
                 _movieViewState.value = it
+                Log.d("MoviesList", it.data.toString())
             }.launchIn(coroutineScope)
     }
 
